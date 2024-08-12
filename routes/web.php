@@ -30,6 +30,10 @@ Route::patch('/attendances/{attendance}', [App\Http\Controllers\ItemController::
 Route::delete('/attendancesm/{attendance}', [App\Http\Controllers\ItemController::class, 'destroy'])->name('attendances.destroy');
 Route::get('/attendances/{attendance}/edit', [App\Http\Controllers\ItemController::class, 'edit'])->name('attendances.edit');
 
+//Employee
+Route::group(['middleware' => ['auth','admin']], function(){
+    Route::resource('employees', EmployeeController::class);
+});
 
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
