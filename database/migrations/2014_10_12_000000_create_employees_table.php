@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
-            $table->date('hire_date'); // この行が必要です
+            $table->string('password');
+            $table->date('hire_date')->nullable(); // この行が必要です
+            $table->boolean('is_administrator')->default(true);
             $table->timestamps();
         });
     }

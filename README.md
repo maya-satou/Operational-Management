@@ -51,3 +51,19 @@ git commit -m "Fixed issue with AttendanceController and updated view"
 
 # 変更をリモートリポジトリのmainブランチにプッシュ
 git push origin main
+
+#　新規にテーブルを作成するとき
+　php artisan make:migration create_テーブル名_table --create=テーブル名
+
+# 既存テーブルにカラムを追加
+php artisan make:migration add_カラム名_to_テーブル名 --table=テーブル名
+
+# テーブル名変更
+
+# コントローラー新規作成
+
+php artisan make:controller 作成するコントローラー名Controller
+
+# モデル新規作成
+php artisan make:model 追加するモデル名
+

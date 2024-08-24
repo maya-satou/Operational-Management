@@ -16,9 +16,9 @@ class EmployeeSeeder extends Seeder
     public function run(): void
     {
         DB::table('employees')->insert([
-            ['name' => '太郎', 'email' => 'taro@example.com', 'hire_date' => '2024-01-01'],
-            ['name' => '次郎', 'email' => 'jiro@example.com', 'hire_date' => '2024-01-01'],
-            ['name' => '三郎', 'email' => 'saburo@example.com', 'hire_date' => '2024-01-01'],
+            ['name' => '太郎', 'email' => 'taro@techic.co.jp', 'hire_date' => '2024-01-01'],
+            ['name' => '次郎', 'email' => 'jiro@techic.co.jp', 'hire_date' => '2024-01-01'],
+            ['name' => '三郎', 'email' => 'saburo@techic.co.jp', 'hire_date' => '2024-01-01'],
         ]);
     }
 }

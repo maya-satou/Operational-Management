@@ -26,6 +26,18 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', '業務管理システム') }}
                 </a>
+                <a class="navbar-brand" href="{{ route('attendances.index') }}">
+                    勤怠一覧
+                </a>
+                <a class="navbar-brand" href="{{ route('employees.index') }}">
+                    社員一覧
+                </a>
+                <a class="navbar-brand" href="{{ route('projects.index') }}">
+                    案件一覧
+                </a>
+                <a class="navbar-brand" href="{{ route('skill_ranks.index') }}">
+                    スキルランク一覧
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

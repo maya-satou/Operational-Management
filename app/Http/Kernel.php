@@ -15,7 +15,6 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         // other middlewares
-        'admin' => \APP\Http\Middleware\AdminMiddleware::class,
     ];
 
     /**

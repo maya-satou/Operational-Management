@@ -17,7 +17,7 @@ class AttendanceController extends Controller
     public function create()
     {
         $employees = Employee::all();
-        return view('attendances.create', compact('employees'));
+        return view('attendances.create',compact('employees'));
     }
 
     public function store(Request $request)
@@ -40,6 +40,12 @@ class AttendanceController extends Controller
         return view('attendances.edit', compact('attendance', 'employees'));
 
 
+    }
+
+    public function show($id)
+    {
+        $attendance = Attendance::findOrFail($id);
+        return view('attendances.show', compact('attendance'));
     }
 
     public function update(Request $request, $id)

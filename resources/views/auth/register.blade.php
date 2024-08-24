@@ -24,6 +24,43 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label for="department_id" class="col-md-4 col-form-label text-md-end">{{ __('Department') }}</label>
+
+                            <div class="col-md-6">
+                                
+                                <select  class="form-select" name="department_id" id="department_id">
+                                    @foreach($departments as $department)
+                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('department_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="skill_rank_id" class="col-md-4 col-form-label text-md-end">{{ __('SkillRank') }}</label>
+
+                            <div class="col-md-6">
+                                
+                                <select  class="form-select" name="skill_rank_id" id="skill_rank_id">
+                                    @foreach($skill_ranks as $skill_rank)
+                                    <option value="{{ $skill_rank->id }}">{{ $skill_rank->name }}</option>
+                                    @endforeach
+                                </select>
+
+                                @error('skill_rank_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>

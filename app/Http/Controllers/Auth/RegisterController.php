@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+use App\Models\Employee;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\SkillRank;
+use App\Models\Department;
+
 
 class RegisterController extends Controller
 {
@@ -51,7 +54,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:employees'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -64,10 +67,22 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Employee::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'skill_rank_id'=>$data['skill_rank_id'],
+            'department_id'=>$data['department_id'],
             'password' => Hash::make($data['password']),
+            'hire_date' => null,
         ]);
+
+        
+    }
+
+    protected function showRegistrationForm()
+    {
+        $skill_ranks = SkillRank::all();
+        $departments = Department::all();
+        return view('auth.register',compact('skill_ranks','departments'));
     }
 }
