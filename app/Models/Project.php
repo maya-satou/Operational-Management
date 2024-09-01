@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
-    public function project(): BelongsToMany
-    {
+    protected $fillable = [
+    'name',
+    'project', 
+    ];
+    
+    public function employees()
+{
         return $this->belongsToMany(Employee::class,'employee_projects')
         ->withPivot('period','cost');
         

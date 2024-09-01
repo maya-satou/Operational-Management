@@ -3,7 +3,7 @@
 @section('content')
 
 
-<h1 class="mb-4">スキルランク編集</h1>
+<h1 class="mb-4">案件名編集</h1>
 <div>
         <ul>@foreach ($errors->all() as $error)
          <li>{{$error}}</li>
@@ -13,19 +13,19 @@
 <div class="container">
     <div class="col-md-6"><!--横幅を狭く固定-->
 
-      <form action="{{ route('skill_ranks.update', $skill_rank->id) }}" method="POST">
+      <form action="{{ route('projects.update', $project->id) }}" method="POST">
       @csrf
       @method('PUT')
 
-       <!--  スキル名 -->
+       <!--  案件名 -->
        　<div class="form-group">
-        <label for="skill_rank">スキル名</label>
-        <input class="form-control" id="skill_rank" name="name" value="{{ $skill_rank -> name }}" >
+        <label for="project">スキル名</label>
+        <input class="form-control" id="project" name="name" value="{{ $project -> name }}" >
             
       </div>
      <button type="submit" class="btn btn-primary">更新</button>
     </form>
-    <!-- <form method="POST" action="{{ route('skill_ranks.destroy', $skill_rank) }}" class="mt-3">
+    <!-- <form method="POST" action="{{ route('projects.destroy', $project->id) }}" class="mt-3">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-danger">削除</button>

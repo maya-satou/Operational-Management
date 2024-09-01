@@ -1,54 +1,61 @@
 @extends('layouts.app')
 
 @section('content')
+<h1 class="mb-4 text-center">社員情報編集</h1>
 
-
-h1 class="mb-4">社員情報編集</h1>
-<div>
-        <ul>@foreach ($errors->all() as $error)
-         <li>{{$error}}</li>
-         @endforeach
-         </ul>
-</div>
 <div class="container">
-    <div class="col-md-6"><!--横幅を狭く固定-->
+    <div class="d-flex justify-content-center">
+        <div class="col-md-6">
+            <!-- エラーメッセージの表示 -->
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-      <form action="{{ route('employees.update', $employee->id) }}" method="POST">
-      @csrf
-      @method('PUT')
+            <!-- フォーム -->
+            <form action="{{ route('employees.update', $employee->id) }}" method="POST">
+                @csrf
+                @method('PUT')
 
-      <!-- 社員選択 -->
-       <div class="mb-3">
-        <label for="employee_id" class="form-label">社員</label>
-        <input type="text" name="employee_id" id="employee_id" class="form-control" required>
-            @foreach($employees as $employee)
-                <option value="{{ $employee->id }}" {{ $attendance->employee_id == $employee->id ? 'selected' : '' }}>
-                    {{ $employee->name }}
-                </option>
-            @endforeach 
-        
+                <!-- 所属部署選択 -->
+                <div class="mb-3">
+                    <label for="department_id" class="form-label">所属部署</label>
+                    <select name="department_id" id="department_id" class="form-control" required>
+                        @foreach($departments as $department)
+                            <option value="{{ $department->id }}" {{ $employee->department_id == $department->id ? 'selected' : '' }}>
+                                {{ $department->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <!-- スキルランク選択 -->
+                <div class="mb-3">
+                    <label for="skill_rank_id" class="form-label">スキルランク</label>
+                    <select name="skill_rank_id" id="skill_rank_id" class="form-control" required>
+                        @foreach($skill_ranks as $skill_rank)
+                            <option value="{{ $skill_rank->id }}" {{ $employee->skill_rank_id == $skill_rank->id ? 'selected' : '' }}>
+                                {{ $skill_rank->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">更新</button>
+            </form>
+
+            <!-- 削除フォーム -->
+            <form method="POST" action="{{ route('employees.destroy', $employee) }}" class="mt-3">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">削除</button>
+            </form>
         </div>
-
-       <!-- 所属部署 -->
-        <div class="mb-3">
-          <label for="department" class="form-label">所属部署</label>
-          <input type="datetime-local" name="clock_in" id="clock_in" class="form-control" value="{{ \Carbon\Carbon::parse($attendance->clock_in)->format('Y-m-d\TH:i') }}" required>
-        </div>
-        <!--退勤時刻-->
-        <div class="mb-3">
-          <label for="clock_in" class="form-label">退勤時刻</label>
-          <input type="datetime-local" name="clock_in" id="clock_in" class="form-control" value="{{ \Carbon\Carbon::parse($attendance->clock_in)->format('Y-m-d\TH:i') }}" required>
-        </div>
-
-
-       <button type="submit" class="btn btn-primary">更新</button>
-    </form>
-    <form method="POST" action="{{ route('attendances.destroy', $attendance) }}" class="mt-3">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">削除</button>
-    </form>
     </div>
 </div>
-
 @endsection

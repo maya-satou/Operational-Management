@@ -18,14 +18,7 @@
                 <label for="department_id" class="form-label">所属部署登録</label>
                 <input type="text" name="name" id="name" class="form-select" required>
             </div>
-            <div class="mb-3">
-                <label for="employees" class="form-label">従業員を割り当てる:</label>
-                <select name="employees[]" id="employees" class="form-select" multiple>
-                    @foreach($employees as $employee)
-                    <option value="{{ $employee->id }}">{{ $employee->name }}</option>
-                    @endforeach
-                </select>
-            </div>
+          
 
 
 

@@ -13,9 +13,10 @@ class SkillRank extends Model
         
     ];
 
-    public function employee()
+    // 複数の従業員を持つリレーションを定義
+    public function employees()
     {
-        return $this->belongsTo(Employee::class);
+        return $this->hasMany(Employee::class, 'skill_rank_id');
     }
 }
 

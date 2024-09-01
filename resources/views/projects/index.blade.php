@@ -16,17 +16,15 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>名前</th>
                     <th>案件名</th>
                     <th>操作</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($projects as $project)
-                   @foreach($project->employees as $employee)
+                   
                     <tr>
                         <td>{{ $project->id }}</td>
-                        <td>{{ $project->employee->name }}</td> <!-- Employeeの名前を表示する場合 -->
                         <td>{{ $project->name }}</td>
                         <td>
                             <!--編集のリンクを追加-->
@@ -34,11 +32,10 @@
                            
                         </td>
                     </tr>
-                    @endforeach
+                    
                 @endforeach
             </tbody>
         </table>
        </br>
     </div>
-    <a href="{{ route('projects.create') }}">新規作成</a>
 @endsection

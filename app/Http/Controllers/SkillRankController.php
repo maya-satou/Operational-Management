@@ -13,52 +13,64 @@ class SkillRankController extends Controller
     public function index()
     {
         $skill_ranks = SkillRank::all();
-        return view('skill_ranks.index',compact('skill_ranks'));
+        // すべてのスキルランクと関連する従業員を取得
+        $employees = Employee::get();
+        return view('skill_ranks.index', compact('skill_ranks','employees'));
     }
 
     public function create()
     {
-        $employees = Employee::all();
-        return view('skill_ranks.create',compact('employees'));
+        
+        return view('skill_ranks.create');
 
     }
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
+        $request->validate([
+            'name' => 'required',
           
         ]);
 
-        $skill_ranks = SkillRank::create($validatedData);
-        return redirect()->route('skill_ranks.index',compact('skill_ranks'));
+        // $employee = Employee::findOrFail($request->employee_id);
+        // $employee->update($validatedData);
+        SkillRank::create([
+            'name' => $request->name,
+        ]);
+        return redirect()->route('skill_ranks.index');
     }
 
-    public function  edit(SkillRank $Skill_rank)
+    public function  edit(SkillRank $skill_rank)
     {
-        return view('skill_ranks.edit', compact('skill_rank'));
+     // すべての従業員を取得
+    $employees = Employee::get();
+    
+    
+    // ビューに skill_ranks を渡す
+        return view('skill_ranks.edit', ['skill_rank' => $skill_rank]);
+     
 
     }
 
-    
-    public function update(Request $request, SkillRank $project)
+       public function update(Request $request, SkillRank $skill_rank)
     {
       
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'employees' => 'array',
+                     'name' => 'required',
         ]);
 
-        $Skill_ranks= SkillRank::findOrFail($skill_rank);
-        $project->update($validatedData);
+       
+        // スキルランクの更新
+        $skill_rank->update([
+       'name' => $validatedData['name'],
+        ]);
 
-        return redirect()->route('skill_ranks.index',compact('skill_ranks'));
+        return redirect()->route('skill_ranks.index',compact('skill_rank'));
 
-        // 従業員の割り当てを更新
-    $project->employees()->sync($request->input('employees', []));
-
-    return redirect()->route('skill_ranks.index');
+     
+    
     }
+    
 
     public function destroy(SkillRank $skill_rank)
     {

@@ -2,66 +2,81 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Models\Employee; // Employee モデルのインポートが必要
+use App\Models\SkillRank;
+use App\Models\Project;
+use App\Models\EmployeeProject;
 
 class EmployeeController extends Controller
 {
-    public function index()
-    {
-        // 一覧表示
-        $employees = Employee::with('projects')->get();
-        //dd($employees);
-        return view('employees.index', compact('employees'));
-    }
-
+    
     public function create()
     {
-        return view('employees.create');
+        $employees = Employee::get();
+        $departments = Department::get();
+        $skill_ranks = SkillRank::get();
+        return view('employees.create',compact('employees','departments', 'skill_ranks'));
+ 
     }
 
     public function store(Request $request)
     {
-        //dd($request->all());
-        $validatedData = $request->validate([ // `vallidate` を `validate` に修正
-           
+        $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'department' => 'required|string|max:255',
-            'unit_price' => 'nullable|numeric',
-            'cost' => 'nullable|numeric',
-            'skill_rank' => 'nullable|string|max:255',
-            
+            'department_id' => 'required|exists:departments,id',
+            'skill_rank_id' => 'required|exists:skill_ranks,id',
+            'email' => 'required|string|max:255|unique:employees',
+            'password' => 'required|string|confirmed|min:8',
+            'hire_date' => 'required|date',
         ]);
-
-        Employee::create($request->all());
+        
+        Employee::create([
+            'name' => $request->name,
+            'department_id' => $request->department_id, // 確認
+            'skill_rank_id' => $request->skill_rank_id,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'hire_date' => $request->hire_date,
+        ]);
         return redirect()->route('employees.index');
     }
 
-    public function  edit(Employee $employee)
+    public function index()
     {
+        $employees = Employee::all();
         
-        return view('employees.edit', compact('employee'));
+        return view('employees.index', compact('employees'));
+    }
+
+    public function edit(Request $request,$id)
+    {
+        $employee = Employee::findOrFail($id);
+        $departments = Department::all();
+        $skill_ranks = SkillRank::all();
+
+        return view('employees.edit', compact('employee', 'departments', 'skill_ranks'));
+
 
     }
 
-    public function update(Request $request,Employee $employee)
+    public function update(Request $request, $id)
     {
-      
-        $employee = Attendance::findOrFail($id);
-        
         $request->validate([
-            'employee_id' => 'required|unique:employees,employee_id,' . $employee->id,
-            'name' => 'required|string|max:255',
-            'department' => 'required|string|max:255',
-            'team' => 'required|string|max:255',
-            'unit_price' => 'nullable|numeric',
-            'cost' => 'nullable|numeric',
-            'skill_rank' => 'nullable|string|max:255',
-            'work_hours' => 'nullable|numeric',
+            'department_id' => 'required|exists:departments,id', 
+            'skill_rank_id' => 'required|exists:skill_ranks,id', 
+        ]);
+    
+        $employee = Employee::findOrFail($id);
+        $employee->update([
+            'department_id' => $request->department_id,
+            'skill_rank_id' => $request->skill_rank_id,
         ]);
 
-        $employee->update($request->all());
-        return redirect()->route('employees.index');
+    return redirect()->route('employees.index');
+
+
     }
 
     public function show(Employee $employee)

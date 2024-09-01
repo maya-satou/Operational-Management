@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\EmployeeProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +49,8 @@ Route::get('/attendances/{attendance}/edit', [App\Http\Controllers\AttendanceCon
 
 //});
 
+
+
 //Project
  Route::get('/projects',[App\Http\Controllers\ProjectController::class,'index'])->name('projects.index');
  Route::post('/projects',[App\Http\Controllers\ProjectController::class,'store'])->name('projects.store');
@@ -64,12 +68,20 @@ Route::get('/skill\ranks',[App\Http\Controllers\SkillRankController::class,'inde
  Route::delete('/skill_ranks/{skill_rank}',[App\Http\Controllers\SkillRankController::class,'destroy'])->name('skill_ranks.destroy');
 
 //Department
-Route::get('/depatrments',[App\Http\Controllers\departmentController::class,'index'])->name('depatrments.index');
- Route::post('/depatrments',[App\Http\Controllers\departmentController::class,'store'])->name('depatrments.store');
- Route::get('/depatrments/create',[App\Http\Controllers\departmentController::class,'create'])->name('depatrments.create');
- Route::get('/depatrments/{department}/edit',[App\Http\Controllers\departmentController::class,'edit'])->name('depatrments.edit');
- Route::put('/depatrments/{department}',[App\Http\Controllers\departmentController::class,'update'])->name('depatrments.update');
- Route::delete('/depatrments/{department}',[App\Http\Controllers\departmentController::class,'destroy'])->name('depatrments.destroy');
+Route::get('/departments',[App\Http\Controllers\departmentController::class,'index'])->name('departments.index');
+ Route::post('/departments',[App\Http\Controllers\departmentController::class,'store'])->name('departments.store');
+ Route::get('/departments/create',[App\Http\Controllers\departmentController::class,'create'])->name('departments.create');
+ Route::get('/departments/{department}/edit',[App\Http\Controllers\departmentController::class,'edit'])->name('departments.edit');
+ Route::put('/departments/{department}',[App\Http\Controllers\departmentController::class,'update'])->name('departments.update');
+ Route::delete('/departments/{department}',[App\Http\Controllers\departmentController::class,'destroy'])->name('departments.destroy');
+
+//EmployeeProject
+Route::get('/employee_projects',[App\Http\Controllers\EmployeeProjectController::class,'index'])->name('employee_projects.index');
+ Route::post('/Es',[App\Http\Controllers\EmployeeProjectController::class,'store'])->name('employee_projects.store');
+ Route::get('/employee_projects/create',[App\Http\Controllers\EmployeeProjectController::class,'create'])->name('employee_projects.create');
+ Route::get('/employee_projects/{employee_project}/edit',[App\Http\Controllers\EmployeeProjectController::class,'edit'])->name('employee_projects.edit');
+ Route::put('/employee_projects/{employee_project}',[App\Http\Controllers\EmployeeProjectController::class,'update'])->name('employee_projects.update');
+ Route::delete('/employee_projects/{employee_project}',[App\Http\Controllers\EmployeeProjectController::class,'destroy'])->name('employee_projects.destroy');
 
 
 

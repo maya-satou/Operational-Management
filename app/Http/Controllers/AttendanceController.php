@@ -14,10 +14,14 @@ class AttendanceController extends Controller
         return view('attendances.index', compact('attendances'));
     }
 
-    public function create()
+    public function clock_in()
     {
-        $employees = Employee::all();
-        return view('attendances.create',compact('employees'));
+
+    }
+
+    public function clock_out()
+    {
+        
     }
 
     public function store(Request $request)

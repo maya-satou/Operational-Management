@@ -20,18 +20,28 @@ protected $fillable = [
     'name', 
     'email',
     'department_id',
-    'team', 
-    'unit_price', 
+    'hire_date', 
     'cost', 
     'skill_rank_id',
-    'work_hours',
     'password',
     ];
 
-    public function projects():BelongsToMany
+    public function projects()
     {
         return $this->belongsToMany(project::class,'employee_project')
         ->withPivot('period','cost');
+    }
+
+    // スキルランクとのリレーションを定義
+    public function skill_rank()
+    {
+        return $this->belongsTo(SkillRank::class, 'skill_rank_id');
+    }
+
+    //所属部署とのリレーション定義
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
     }
 
     /**

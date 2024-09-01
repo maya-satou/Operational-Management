@@ -18,18 +18,8 @@
                 <label for="project_id" class="form-label">案件名</label>
                 <input type="text" name="name" id="name" class="form-select" required>
             </div>
-            <div class="mb-3">
-                <label for="employees" class="form-label">従業員を割り当てる:</label>
-                <select name="employees[]" id="employees" class="form-select" multiple>
-                    @foreach($employees as $employee)
-                    <option value="{{ $employee->id }}">{{ $employee->name }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-
-
-            <!-- 登録ボタン -->
+            
+           <!-- 登録ボタン -->
             <button type="submit" class="btn btn-primary mt-3">登録</button>
         </form>
     </div>

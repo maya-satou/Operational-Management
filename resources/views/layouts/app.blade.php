@@ -38,6 +38,13 @@
                 <a class="navbar-brand" href="{{ route('skill_ranks.index') }}">
                     スキルランク一覧
                 </a>
+                <a class="navbar-brand" href="{{ route('departments.index') }}">
+                    所属部署一覧
+                </a>
+                <a class="navbar-brand" href="{{ route('employee_projects.index') }}">
+                    社員案件一覧
+                </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

@@ -12,7 +12,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('projects.index');
+        return view('projects.index', compact('projects'));
     }
 
     public function create()
@@ -29,42 +29,38 @@ class ProjectController extends Controller
           
         ]);
 
-        $project = Project::create($validatedData);
+        $projects = Project::create($validatedData);
         return redirect()->route('projects.index');
     }
 
+    //部署の編集
     public function  edit(Project $project)
     {
         return view('projects.edit', compact('project'));
 
     }
 
-    
-    public function update(Request $request, project $project)
+    //案件名の更新
+    public function update(Request $request, Project $project)
     {
-            $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'employees' => 'array',
-        ]);
+        $validatedData = $request->validate([
+            'name' => 'required',
+]);
+      
+         // 案件名の更新
+         $project->update([
+            'name' => $validatedData['name'],
+             ]);
 
-        $project = Project::findOrFail($id);
-        $project->update($validatedData);
+        // $projects= project::findOrFail($project);
+        // $project->update($validatedData);
 
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index',compact('project'));
 
-        // 従業員の割り当てを更新
-    $project->employees()->sync($request->input('employees', []));
 
-    return redirect()->route('projects.index');
-    }
+            }
 
-    public function destroy(Project $project)
-    {
-        $project->delete();
-
-        return redirect()->route('projects.index');
-    }
-
+   
     
 
     
