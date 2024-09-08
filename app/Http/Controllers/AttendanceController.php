@@ -151,8 +151,10 @@ class AttendanceController extends Controller
         ]);
 
        
-        $attendance->clock_in = $request->clock_in;
-        $attendance->clock_out = $request->clock_out;
+        // $attendance->clock_in = $request->clock_in;
+        // $attendance->clock_out = $request->clock_out;
+        $attendance->clock_in = Carbon::parse($request->clock_in)->format('Y-m-d H:i:s');
+        $attendance->clock_out = Carbon::parse($request->clock_out)->format('Y-m-d H:i:s');
         $attendance->save();
         
         
