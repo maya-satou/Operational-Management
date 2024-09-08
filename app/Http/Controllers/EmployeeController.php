@@ -40,7 +40,7 @@ class EmployeeController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'hire_date' => $request->hire_date,
-            'is_administrator' =>$request->is_admin,
+            'is_administrator' =>$request->is_admin ?? false,
         ]);
         return redirect()->route('employees.index');
     }
