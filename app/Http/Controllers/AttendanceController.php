@@ -88,7 +88,7 @@ class AttendanceController extends Controller
         $todayAttendance->clock_out = Carbon::now();
         $todayAttendance->save();
 
-        return redilect()->route('attendances.index')->with('message','退勤しました');
+        return redirect()->route('attendances.index')->with('message','退勤しました');
 
         // 所定労働時間（8時間として定義）
         $standardWorkHours = 8;
