@@ -63,7 +63,9 @@ class AttendanceController extends Controller
         // 出勤を記録
         $attendance = new Attendance();
         $attendance->employee_id = auth()->id();
-        $attendance->clock_in = Carbon::now();
+        //$attendance->clock_in = Carbon::now();
+        $now = Carbon::now();
+        $attendance->clock_in = $now->format('Y-m-d H:i:s');
         $attendance->save();
 
         return redirect()->route('attendances.index')->with('message', '出勤しました');;
@@ -142,13 +144,13 @@ class AttendanceController extends Controller
 
     public function update(Request $request, Attendance $attendance)
     {
-       //dd($attendance);
+       
         $request->validate([
             'clock_in' => 'required|date',
             'clock_out' => 'nullable|date',
         ]);
 
-        //$attendance->update($request->validate());
+       
         $attendance->clock_in = $request->clock_in;
         $attendance->clock_out = $request->clock_out;
         $attendance->save();
