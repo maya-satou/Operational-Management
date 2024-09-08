@@ -60,10 +60,14 @@ php artisan make:migration add_カラム名_to_テーブル名 --table=テーブ
 
 # テーブル名変更
 
+
 # コントローラー新規作成
 
 php artisan make:controller 作成するコントローラー名Controller
 
 # モデル新規作成
 php artisan make:model 追加するモデル名
+
+#　マイグレーションにカラムが追加されないとき
+
 

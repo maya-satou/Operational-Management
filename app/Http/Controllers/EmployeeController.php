@@ -30,6 +30,7 @@ class EmployeeController extends Controller
             'email' => 'required|string|max:255|unique:employees',
             'password' => 'required|string|confirmed|min:8',
             'hire_date' => 'required|date',
+            //'is_administrator' =>$request->(is_admin),
         ]);
         
         Employee::create([
@@ -39,6 +40,7 @@ class EmployeeController extends Controller
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'hire_date' => $request->hire_date,
+            'is_administrator' =>$request->is_admin,
         ]);
         return redirect()->route('employees.index');
     }

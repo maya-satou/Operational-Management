@@ -9,6 +9,9 @@
         @endforeach
     </ul>
 </div>
+@if (session('error'))
+        <div class="alert alert-danger">{{ session('error') }}</div>
+@endif
 <div class="container">
     <div class="col-md-6"><!--横幅を狭く固定-->
 
@@ -16,17 +19,7 @@
             @csrf
             @method('PUT')
 
-            <!-- 社員選択 -->
-            <div class="mb-3">
-                <label for="employee_id" class="form-label">社員</label>
-                <select name="employee_id" id="employee_id" class="form-control" required>
-                    @foreach($employees as $employee)
-                        <option value="{{ $employee->id }}" {{ $attendance->employee_id == $employee->id ? 'selected' : '' }}>
-                            {{ $employee->name }}
-                        </option>
-                    @endforeach
-                </select>
-            </div>
+            
 
             <!-- 出勤時刻 -->
             <div class="mb-3">
@@ -43,11 +36,7 @@
             <button type="submit" class="btn btn-primary">更新</button>
         </form>
 
-        <form method="POST" action="{{ route('attendances.destroy', $attendance) }}" class="mt-3">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">削除</button>
-        </form>
+        
     </div>
 </div>
 

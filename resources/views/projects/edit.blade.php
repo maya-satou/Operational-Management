@@ -25,11 +25,7 @@
       </div>
      <button type="submit" class="btn btn-primary">更新</button>
     </form>
-    <!-- <form method="POST" action="{{ route('projects.destroy', $project->id) }}" class="mt-3">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">削除</button>
-    </form> -->
+   
     </div>
 </div>
 

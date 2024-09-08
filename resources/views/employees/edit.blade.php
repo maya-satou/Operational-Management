@@ -49,12 +49,7 @@
                 <button type="submit" class="btn btn-primary">更新</button>
             </form>
 
-            <!-- 削除フォーム -->
-            <form method="POST" action="{{ route('employees.destroy', $employee) }}" class="mt-3">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">削除</button>
-            </form>
+            
         </div>
     </div>
 </div>

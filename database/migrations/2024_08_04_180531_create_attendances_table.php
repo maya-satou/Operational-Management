@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employee_id');
-            $table->timestamp('clock_in')->nullable();
-            $table->timestamp('clock_out')->nullable();
+            $table->time('clock_in')->nullable();
+            $table->time('clock_out')->nullable();
             $table->timestamps();
             $table->foreign('employee_id')->references('id')->on('employees')>onDelete('cascade');
+            
+        
         });
     }
 

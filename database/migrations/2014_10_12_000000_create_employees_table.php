@@ -19,7 +19,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->string('password');
             $table->date('hire_date')->date(); // この行が必要です
-            $table->boolean('is_administrator')->default(true);
             $table->timestamps();
         });
     }

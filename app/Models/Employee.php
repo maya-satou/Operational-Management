@@ -24,6 +24,7 @@ protected $fillable = [
     'cost', 
     'skill_rank_id',
     'password',
+    'is_administrator',
     ];
 
     public function projects()
@@ -42,6 +43,12 @@ protected $fillable = [
     public function department()
     {
         return $this->belongsTo(Department::class);
+    }
+
+    //Attendanceとのリレーション
+    public function attendances()
+    {
+    return $this->hasMany(Attendance::class);
     }
 
     /**
@@ -66,12 +73,7 @@ protected $fillable = [
        
     //];
 
-    //public function getAuthIdentifierName()
-    //{
-        // 空のメソッドを定義することで、認証システムが識別子を要求しないようにする
-    //return null;
-
-    //}
+    
 
     
 

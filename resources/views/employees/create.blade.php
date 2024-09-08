@@ -15,10 +15,7 @@
         </div>
     @endif
 
-     <!-- 登録ボタン -->
-     <div class="text-end mb-3">
-                    <button type="submit" class="btn btn-primary">登録</button>
-    </div>
+     
 
     <!-- フォーム -->
     <div class="d-flex justify-content-center">
@@ -26,11 +23,21 @@
             <form action="{{ route('employees.store') }}" method="POST">
                 @csrf
 
+                <!-- 登録ボタン -->
+     　　　　　　<div class="text-end mb-3">
+                    <button type="submit" class="btn btn-primary">登録</button>
+   　　　　　　　 </div>
+
                 <!-- 社員名 -->
                 <div class="mb-3">
                     <label for="name" class="form-label">社員名</label>
                     <input type="text" name="name" id="name" class="form-control" required>
                 </div>
+                <!--管理者か一般ユーザか-->
+               <div>
+                <input type="checkbox" name="is_admin" id="is_admin" value="1">
+                <label for="is_admin">管理者</label>
+               </div>
 
                 <!-- 所属部署選択 -->
                 <div class="mb-3">

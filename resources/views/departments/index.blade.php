@@ -35,5 +35,4 @@
         </table>
        </br>
     </div>
-    <a href="{{ route('departments.create') }}">新規作成</a>
 @endsection
