@@ -49,7 +49,7 @@ Route::group(['middleware' => ['auth']], function(){
       Route::get('/skill_ranks/create',[App\Http\Controllers\SkillRankController::class,'create'])->name('skill_ranks.create');
       Route::get('/skill_ranks/{skill_rank}/edit',[App\Http\Controllers\SkillRankController::class,'edit'])->name('skill_ranks.edit');
       Route::put('/skill_ranks/{skill_rank}',[App\Http\Controllers\SkillRankController::class,'update'])->name('skill_ranks.update');
-     
+      
 
    //Department
       Route::get('/departments',[App\Http\Controllers\departmentController::class,'index'])->name('departments.index');
