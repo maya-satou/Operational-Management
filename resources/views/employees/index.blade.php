@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="container">
 <h1>社員情報</h1>
 
 <!-- エラーメッセージの表示 -->
@@ -14,8 +16,8 @@
     </div>
 @endif
 
-<!-- コンテナ -->
-<div class="container">
+
+
     <div class="text-end mb-3">
         <!-- 社員登録ボタン -->
         <a href="{{ route('employees.create') }}" class="btn btn-primary">社員追加登録</a>
