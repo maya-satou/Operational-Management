@@ -52,8 +52,7 @@ class ProjectController extends Controller
             'name' => $validatedData['name'],
              ]);
 
-        // $projects= project::findOrFail($project);
-        // $project->update($validatedData);
+        
 
         return redirect()->route('projects.index',compact('project'));
 

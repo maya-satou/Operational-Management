@@ -5,10 +5,10 @@
 
 <h1 class="mb-4">所属部署編集</h1>
 <div>
-        <ul>@foreach ($errors->all() as $error)
-         <li>{{$error}}</li>
-         @endforeach
-         </ul>
+  <ul>@foreach ($errors->all() as $error)
+     <li>{{$error}}</li>
+      @endforeach
+  </ul>
 </div>
 <div class="container">
     <div class="col-md-6"><!--横幅を狭く固定-->

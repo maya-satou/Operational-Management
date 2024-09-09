@@ -22,6 +22,12 @@
                 @csrf
                 @method('PUT')
 
+                <!--入社日-->
+                 <div class="form-group">
+                  <label for="hire_date">入社日</label>
+                  <input type="date" class="form-control" id="hire_date" name="hire_date" value="{{ old('hire_date', $employee->hire_date) }}">
+                 </div>
+
                 <!-- 所属部署選択 -->
                 <div class="mb-3">
                     <label for="department_id" class="form-label">所属部署</label>

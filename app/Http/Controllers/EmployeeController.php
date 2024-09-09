@@ -57,6 +57,7 @@ class EmployeeController extends Controller
         $employee = Employee::findOrFail($id);
         $departments = Department::all();
         $skill_ranks = SkillRank::all();
+        
 
         return view('employees.edit', compact('employee', 'departments', 'skill_ranks'));
 
@@ -68,12 +69,15 @@ class EmployeeController extends Controller
         $request->validate([
             'department_id' => 'required|exists:departments,id', 
             'skill_rank_id' => 'required|exists:skill_ranks,id', 
+            'hire_date' => 'required|date',
         ]);
     
         $employee = Employee::findOrFail($id);
         $employee->update([
             'department_id' => $request->department_id,
             'skill_rank_id' => $request->skill_rank_id,
+            'hire_date' => $request->hire_date,
+
         ]);
 
     return redirect()->route('employees.index');
