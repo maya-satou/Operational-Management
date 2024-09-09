@@ -61,7 +61,7 @@ Route::group(['middleware' => ['auth']], function(){
    
    //EmployeeProject
       Route::get('/employee_projects',[App\Http\Controllers\EmployeeProjectController::class,'index'])->name('employee_projects.index');
-      Route::post('/Es',[App\Http\Controllers\EmployeeProjectController::class,'store'])->name('employee_projects.store');
+      Route::post('/employee_projects',[App\Http\Controllers\EmployeeProjectController::class,'store'])->name('employee_projects.store');
       Route::get('/employee_projects/create',[App\Http\Controllers\EmployeeProjectController::class,'create'])->name('employee_projects.create');
       Route::get('/employee_projects/{employee_project}/edit',[App\Http\Controllers\EmployeeProjectController::class,'edit'])->name('employee_projects.edit');
       Route::put('/employee_projects/{employee_project}',[App\Http\Controllers\EmployeeProjectController::class,'update'])->name('employee_projects.update');
@@ -74,6 +74,7 @@ Route::group(['middleware' => ['auth']], function(){
    Route::get('/attendances', [App\Http\Controllers\AttendanceController::class, 'index'])->name('attendances.index');
    Route::post('/attendances', [App\Http\Controllers\AttendanceController::class, 'store'])->name('attendances.store');
    Route::post('/attendances/clock_out', [App\Http\Controllers\AttendanceController::class, 'clockOut'])->name('attendances.clock-out');
+   Route::post('/attendances/clock_in', [App\Http\Controllers\AttendanceController::class, 'clockIn'])->name('attendances.clock-in');
    
    //Employee
    Route::get('/employees',[App\Http\Controllers\EmployeeController::class,'index'])->name('employees.index');
