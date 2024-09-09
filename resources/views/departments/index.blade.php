@@ -3,7 +3,13 @@
 @section('content')
 <div class="container">
 
-        <h1>所属部署一覧</h1>
+<h1>所属部署一覧</h1>
+    <div>
+    　　<ul>@foreach ($errors->all() as $error)
+       　<li>{{$error}}</li>
+       　　 @endforeach
+    　　</ul>
+　　</div>
 
         <div class="text-end">
             <!--所属部署登録ボタン-->

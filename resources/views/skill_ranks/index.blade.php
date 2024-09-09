@@ -4,6 +4,12 @@
 <div class="container">
 
         <h1>スキルランク</h1>
+        <div>
+           <ul>@foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+            @endforeach
+          </ul>
+        </div>
 
         <div class="text-end">
             <!--スキルランク登録ボタン-->

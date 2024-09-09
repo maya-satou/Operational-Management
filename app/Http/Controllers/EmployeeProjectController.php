@@ -65,6 +65,7 @@ class EmployeeProjectController extends Controller
         $request->validate([
         'period' => 'required|string|max:255',
         'cost' => 'required|numeric',
+        'project_id' => 'required|exists:projects,id',  // 案件名のバリデーションを追加
 
         ]);
 
@@ -72,6 +73,7 @@ class EmployeeProjectController extends Controller
         $employeeProject->update([
         'period' => $request->period,
         'cost' => $request->cost,
+        'project_id' => $request->project_id,  // 案件名を更新
     ]);
 
     return redirect()->route('employee_projects.index');

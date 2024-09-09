@@ -19,7 +19,7 @@
 
        <!--  案件名 -->
        　<div class="form-group">
-        <label for="project">スキル名</label>
+        <label for="project">案件名</label>
         <input class="form-control" id="project" name="name" value="{{ $project -> name }}" >
             
       </div>
