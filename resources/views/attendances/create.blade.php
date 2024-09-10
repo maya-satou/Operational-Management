@@ -8,7 +8,7 @@
          @endforeach
          </ul>
 </div>
-<div class="container">
+<div class="d-flex justify-content-center">
     <div class="col-md-6"><!--横幅を狭く固定-->
     <form method="POST" action="{{ route('attendances.store') }}">
     @csrf
