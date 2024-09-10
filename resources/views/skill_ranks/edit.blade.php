@@ -3,14 +3,14 @@
 @section('content')
 
 
-<h1 class="mb-4">スキルランク編集</h1>
+<h1 class="text-center mb-4">スキルランク編集</h1>
 <div>
         <ul>@foreach ($errors->all() as $error)
          <li>{{$error}}</li>
          @endforeach
          </ul>
 </div>
-<div class="container">
+<div class="d-flex justify-content-center">
     <div class="col-md-6"><!--横幅を狭く固定-->
 
       <form action="{{ route('skill_ranks.update', $skill_rank->id) }}" method="POST">

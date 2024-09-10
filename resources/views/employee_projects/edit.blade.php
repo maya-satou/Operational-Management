@@ -2,17 +2,17 @@
 
 @section('content')
 
-<h1 class="mb-4">社員案件編集</h1>
+<h1 class="text-center mb-4">社員案件編集</h1>
 <div>
         <ul>@foreach ($errors->all() as $error)
          <li>{{$error}}</li>
          @endforeach
          </ul>
 </div>
-<div class="container">
+<div class="d-flex justify-content-center">
     <div class="col-md-6"><!--横幅を狭く固定-->
 
-      <form action="{{ route('employee_projects.update', $employeeProject->id) }}" method="POST">
+    <form action="{{ route('employee_projects.update', $employeeProject->id) }}" method="POST">
       @csrf
       @method('PUT')
       <div class="form-group">
@@ -37,9 +37,10 @@
                 <input type="number" name="cost" id="name" class="form-select" required>
             </div>
 
-            
-      </div>
-     <button type="submit" class="btn btn-primary">更新</button>
+          
+          <!-- 更新ボタン -->
+         <button type="submit" class="btn btn-primary">更新</button>
+        </div>
     </form>
     
     </div>

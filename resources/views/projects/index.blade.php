@@ -2,20 +2,16 @@
 
 @section('content')
 <div class="container">
-
-    <h1>案件一覧</h1>
+  <h1>案件一覧</h1>
      <div>
        <ul>@foreach ($errors->all() as $error)
         <li>{{$error}}</li>
           @endforeach
        </ul>
     </div>
-
         <div class="text-end">
             <!--案件登録ボタン-->
           <a href="{{ route('projects.create') }}" class="btn btn-primary">登録</a>
-
-        
         </div>
         <br>
         <table class="table table-bordered">
