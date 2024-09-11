@@ -14,6 +14,7 @@ class Attendance extends Model
         'clock_in', 
         'clock_out',
         'status'=> Status::class,
+        'date',
 
         
     ];

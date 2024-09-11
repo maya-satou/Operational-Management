@@ -48,6 +48,7 @@
             <tr>
                 <th>従業員ID</th>
                 <th>従業員名</th>
+                <th>日付</th>
                 <th>出勤時間</th>
                 <th>退勤時間</th>
                 <th>所定労働時間</th>
@@ -64,6 +65,7 @@
                     <td>{{ $attendance->employee->id }}</td>
                     <td>{{ $attendance->employee->name }}</td>
                     <!-- 勤怠情報の表示 -->
+                     <td>{{ $attendance->date }}</td>
                     <td>{{ $attendance->clock_in }}</td>
                     <td>{{ $attendance->clock_out }}</td>
                     <td>{{ $attendance->work_time .'時間'}}</td>
@@ -84,6 +86,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th>日付</th>
                 <th>出勤時間</th>
                 <th>退勤時間</th>
                 <th>所定労働時間</th>
@@ -94,6 +97,7 @@
         <tbody>
             @foreach($attendances as $attendance)
                 <tr>
+                    <td>{{ $attendance->date }}</td>
                     <td>{{ $attendance->clock_in }}</td>
                     <td>{{ $attendance->clock_out }}</td>
                     <td>{{ $attendance->work_time .'時間'}}</td>
