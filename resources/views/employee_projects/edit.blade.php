@@ -15,16 +15,18 @@
     <form action="{{ route('employee_projects.update', $employeeProject->id) }}" method="POST">
       @csrf
       @method('PUT')
-      <div class="form-group">
-    　　　　<label for="project_id">案件名</label>
-    　　　　<select class="form-control" id="project_id" name="project_id">
+
+    <!-- 案件名入力 -->
+    <div class="form-group">
+    　　<label for="project_id">案件名</label>
+    　　　<select class="form-control" id="project_id" name="project_id">
         　　　　@foreach($projects as $project)
             　　<option value="{{ $project->id }}" {{ $employeeProject->project_id == $project->id ? 'selected' : '' }}>
                 {{ $project->name }}
             　　　</option>
         　　　　@endforeach
-    　　　　</select>
-　　　</div>
+    　　　</select>
+　　</div>
 
         <!--期間入力-->
         <div class="mb-3">
