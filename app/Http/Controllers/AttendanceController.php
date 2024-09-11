@@ -16,19 +16,21 @@ class AttendanceController extends Controller
     {
        $employee = Auth::user();
        $is_admin = $employee->is_administrator; // 管理者かどうかのフラグをセット
-  
+
+   
        if ($employee->is_administrator == 1) {
         // 管理者の場合は全従業員の勤怠情報を取得
         $attendances = Attendance::with('employee')
-            ->whereYear('clock_in', Carbon::now()->year)
-            ->whereMonth('clock_in', Carbon::now()->month)
+
+            //->whereYear('clock_in', Carbon::now()->year)
+            //->whereDate('clock_in', Carbon::now())
             ->orderBy('clock_in', 'asc')
             ->get();
     } else {
         // 一般ユーザーの場合は自分の勤怠情報のみ取得
         $attendances = Attendance::where('employee_id', $employee->id)
-            ->whereYear('clock_in', Carbon::now()->year)
-            ->whereMonth('clock_in', Carbon::now()->month)
+            //->whereYear('clock_in', Carbon::now()->year)
+            //->wheredate('clock_in', Carbon::now())
             ->orderBy('clock_in', 'asc')
             ->get();
     }
@@ -43,7 +45,7 @@ class AttendanceController extends Controller
             $attendance->total_time = 0; // 退勤していない場合は総労働時間を0にする
         }
     }
-    //dd($attendance->employee as $employee);
+    
        return view('attendances.index',compact('attendances','is_admin'));
     }
 
@@ -65,7 +67,8 @@ class AttendanceController extends Controller
         $attendance->employee_id = auth()->id();
         //$attendance->clock_in = Carbon::now();
         $now = Carbon::now();
-        $attendance->clock_in = $now->format('Y-m-d H:i:s');
+        $attendance->date = $now->format('Y-m-d');
+        $attendance->clock_in = $now->format('H:i:s');
         $attendance->save();
 
         return redirect()->route('attendances.index')->with('message', '出勤しました');;
