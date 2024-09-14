@@ -48,7 +48,7 @@
             <!-- 単価入力 -->
             <div class="mb-3">
                 <label for="cost" class="form-label">単価</label>
-                <input type="number" name="cost" id="name" class="form-select" placeholder="8桁まで入力してください" >
+                <input type="number" name="cost" id="name" class="form-select" placeholder="8桁まで入力してください" maxlength="8">
             </div>
 
 

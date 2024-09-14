@@ -29,7 +29,7 @@ class EmployeeProjectController extends Controller
             'period' => [ 'required',
              Rule::unique('employee_projects')
             ->where(function ($query) use ($request) { return $query->where('project_id', $request->project_id) ->where('employee_id', $request->employee_id); }), ],
-            'cost' => 'required|digits_between:1,8',
+            'cost' => 'required|numeric|digits_between:1,8',
             
         ]);
         
