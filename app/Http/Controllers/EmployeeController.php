@@ -28,7 +28,7 @@ class EmployeeController extends Controller
             'department_id' => 'required|exists:departments,id',
             'skill_rank_id' => 'required|exists:skill_ranks,id',
             'email' => 'required|string|max:255|unique:employees',
-            'password' => 'required|string|confirmed|min:8',
+            'password' => 'required|string|confirmed|max:8',
             'hire_date' => 'required|date',
             //'is_administrator' =>$request->(is_admin),
         ]);

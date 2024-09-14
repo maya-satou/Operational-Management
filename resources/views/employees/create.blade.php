@@ -75,13 +75,13 @@
                 <!-- パスワード -->
                 <div class="mb-3">
                     <label for="password" class="form-label">パスワード</label>
-                    <input type="password" name="password" id="password" class="form-control" required>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="8文字以内で入力してください。" maxlength="8" required>
                 </div>
 
                 <!-- パスワード確認 -->
                 <div class="mb-3">
                     <label for="password_confirmation" class="form-label">パスワード確認</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="8文字以内で入力してください。" maxlength="8" required>
                 </div>
 
                 
