@@ -25,7 +25,7 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:8',
           
         ]);
 
@@ -44,7 +44,7 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name' => 'required|max:8',
 ]);
       
          // 案件名の更新

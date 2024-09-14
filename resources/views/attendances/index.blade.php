@@ -26,7 +26,6 @@
     </div>
     @endif
 
-
     <!-- 出勤 -->
     <div class="mb-4">
         <form action="{{ route('attendances.clock-in') }}" method="POST" class="d-inline">
@@ -65,7 +64,7 @@
                     <td>{{ $attendance->employee->id }}</td>
                     <td>{{ $attendance->employee->name }}</td>
                     <!-- 勤怠情報の表示 -->
-                     <td>{{ $attendance->date }}</td>
+                    <td>{{ $attendance->date }}</td>
                     <td>{{ $attendance->clock_in }}</td>
                     <td>{{ $attendance->clock_out }}</td>
                     <td>{{ $attendance->work_time .'時間'}}</td>

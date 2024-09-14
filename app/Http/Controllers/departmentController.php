@@ -25,7 +25,7 @@ class departmentController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:12',
           
         ]);
 
@@ -44,7 +44,7 @@ class departmentController extends Controller
     public function update(Request $request, Department $department)
     {
         $validatedData = $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|max:12',
         ]);
       
          // 所属部署名の更新
@@ -53,22 +53,8 @@ class departmentController extends Controller
              
         ]);
 
-        // $departments= Department::findOrFail($department);
-        // $department->update($validatedData);
-
-        return redirect()->route('departments.index',compact('department'));
-
-    //     // 従業員の割り当てを更新
-    // $project->employees()->sync($request->input('employees', []));
-
-    // return redirect()->route('departments.index');
-    // }
+        
      }
 
-    public function destroy(Department $department)
-    {
-        $department->delete();
-
-        return redirect()->route('departments.index');
-    }
+    
 }

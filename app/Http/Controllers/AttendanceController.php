@@ -55,7 +55,8 @@ class AttendanceController extends Controller
         
         // 今日の出勤記録を取得
         $todayAttendance = Attendance::where('employee_id', auth()->id())
-        ->whereDate('clock_in', Carbon::today())
+        ->whereDate('date', Carbon::today())
+        ->whereNull('clock_out') // 退勤していないレコードが存在するかチェック
         ->first();
 
         if ($todayAttendance) {
@@ -65,7 +66,8 @@ class AttendanceController extends Controller
         // 出勤を記録
         $attendance = new Attendance();
         $attendance->employee_id = auth()->id();
-        //$attendance->clock_in = Carbon::now();
+        $attendance->clock_in = Carbon::now();
+        //$attendance->date = Carbon::today()->toDateString(); // `date` フィールドを設定
         $now = Carbon::now();
         $attendance->date = $now->format('Y-m-d');
         $attendance->clock_in = $now->format('H:i:s');
@@ -147,15 +149,15 @@ class AttendanceController extends Controller
 
     public function update(Request $request, Attendance $attendance)
     {
-       
+        //dd($request->all());  // これでリクエストに含まれる全データを確認
         $request->validate([
+            
             'clock_in' => 'required|date',
             'clock_out' => 'nullable|date',
         ]);
 
        
-        // $attendance->clock_in = $request->clock_in;
-        // $attendance->clock_out = $request->clock_out;
+        $attendance ->date = $request->clock_in;
         $attendance->clock_in = Carbon::parse($request->clock_in)->format('Y-m-d H:i:s');
         $attendance->clock_out = Carbon::parse($request->clock_out)->format('Y-m-d H:i:s');
         $attendance->save();

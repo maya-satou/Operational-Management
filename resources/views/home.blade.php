@@ -7,10 +7,12 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
-    <div class="row">
+<div class="d-flex justify-content-center">
+    <p>業務管理システム</p>
+</div>
+    <div class="d-flex justify-content-center">
         <!--勤怠管理セクション-->
-        <div class="col-md-6">
+        <div class="col-mb-6">
             <div class="box">
                 <div class="box-header with-border">
                     <h3 class="box-title">勤怠管理</h3>
@@ -22,14 +24,15 @@
             </div>
         </div>
     </div>
+    <br>
     <!--社員情報管理セクション-->
-    <div class="col-md-6">
+    <div class="d-flex justify-content-center">
             <div class="box">
                 <div class="box-header with-border">
                     <h3 class="box-title">社員情報管理</h3>
                 </div>
                 <div class="box-body">
-                    <p>社員の情報を登録・編集・更新することができます。</p>
+                    <p>社員の情報を閲覧・登録・編集・更新することができます。</p>
                     <a href="{{ route('employees.index') }}" class="btn btn-primary">社員情報管理に移動</a>
                </div>
             </div>

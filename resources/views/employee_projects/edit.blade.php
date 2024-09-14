@@ -4,10 +4,16 @@
 
 <h1 class="text-center mb-4">社員案件編集</h1>
 <div>
-        <ul>@foreach ($errors->all() as $error)
-         <li>{{$error}}</li>
-         @endforeach
-         </ul>
+    <!-- エラーメッセージの表示 -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 </div>
 <div class="d-flex justify-content-center">
     <div class="col-md-6"><!--横幅を狭く固定-->
@@ -36,7 +42,7 @@
             <!-- 単価入力 -->
             <div class="mb-3">
                 <label for="cost" class="form-label">単価</label>
-                <input type="number" name="cost" id="name" class="form-select" required>
+                <input type="number" name="cost" id="name" class="form-select" placeholder="8桁まで入力してください" maxlength="8">
             </div>
 
           
