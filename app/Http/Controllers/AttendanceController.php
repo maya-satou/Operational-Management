@@ -85,10 +85,15 @@ class AttendanceController extends Controller
         // 今日の出勤記録を取得
         $todayAttendance = Attendance::where('employee_id', $employee->id)
                                     ->whereDate('clock_in', Carbon::today())
+                                    ->whereNull('clock_out') // 退勤していないものを取得
                                     ->first();
 
         if (!$todayAttendance || $todayAttendance->clock_out) {
             return redirect()->route('attendances.index')->with('message','まだ出勤していないか、既に退勤しています。' );
+        }
+
+        if($todayAttendance->clock_out){
+            return redirect()->route('attendances.index')->with('message', '既に退勤しています。');
         }
 
         // 退勤時間を記録
