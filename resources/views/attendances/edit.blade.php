@@ -22,17 +22,23 @@
             @csrf
             @method('PUT')
 
+            <!-- 日付 -->
+            <div class="mb-3">
+                <label for="date" class="form-label">日付</label>
+                <input type="date" name="date" id="date" class="form-control" value="{{ old('date', $attendance->date ? \Carbon\Carbon::parse($attendance->date)->format('Y-m-d') : '') }}" required>
+            </div>
+
 
             <!-- 出勤時刻 -->
             <div class="mb-3">
                 <label for="clock_in" class="form-label">出勤時刻</label>
-                <input type="datetime-local" name="clock_in" id="clock_in" class="form-control" value="{{ \Carbon\Carbon::parse($attendance->clock_in)->format('Y-m-d H:i') }}" required>
+                <input type="time" name="clock_in" id="clock_in" class="form-control" value="{{ old('clock_in', $attendance->clock_in ? \Carbon\Carbon::parse($attendance->clock_in)->format('H:i') : '')  }}" required>
             </div>
 
             <!-- 退勤時刻 -->
             <div class="mb-3">
                 <label for="clock_out" class="form-label">退勤時刻</label>
-                <input type="datetime-local" name="clock_out" id="clock_out" class="form-control" value="{{ \Carbon\Carbon::parse($attendance->clock_out)->format('Y-m-d H:i') }}" required>
+                <input type="time" name="clock_out" id="clock_out" class="form-control" value="{{ old('clock_out', $attendance->clock_out ? \Carbon\Carbon::parse($attendance->clock_out)->format('H:i') : '') }}" required>
             </div>
 
             <button type="submit" class="btn btn-primary">更新</button>
