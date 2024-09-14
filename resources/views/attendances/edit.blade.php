@@ -4,14 +4,17 @@
 
 <h1 class="text-center mb-4">勤怠編集</h1>
 <div>
-    <ul>@foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
-        @endforeach
-    </ul>
+    <!-- エラーメッセージの表示 -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 </div>
-@if (session('error'))
-        <div class="alert alert-danger">{{ session('error') }}</div>
-@endif
 <div class="d-flex justify-content-center">
     <div class="col-md-6"><!--横幅を狭く固定-->
 
@@ -19,7 +22,6 @@
             @csrf
             @method('PUT')
 
-            
 
             <!-- 出勤時刻 -->
             <div class="mb-3">

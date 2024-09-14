@@ -3,10 +3,16 @@
 @section('content')
 <h1 class="mb-4">新規勤怠作成</h1>
 <div>
-        <ul>@foreach ($errors->all() as $error)
-         <li>{{$error}}</li>
-         @endforeach
-         </ul>
+    <!-- エラーメッセージの表示 -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 </div>
 <div class="d-flex justify-content-center">
     <div class="col-md-6"><!--横幅を狭く固定-->

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1 class="text-center mb-4">新規社員登録</h1>
-
+    <div>
     <!-- エラーメッセージの表示 -->
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -14,6 +14,7 @@
             </ul>
         </div>
     @endif
+    </div>
 
      
 

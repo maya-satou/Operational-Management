@@ -5,10 +5,16 @@
 
 <h1 class="text-center mb-4">案件名編集</h1>
 <div>
-        <ul>@foreach ($errors->all() as $error)
-         <li>{{$error}}</li>
-         @endforeach
-         </ul>
+    <!-- エラーメッセージの表示 -->
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 </div>
 <div class="d-flex justify-content-center">
     <div class="col-md-6"><!--横幅を狭く固定-->
@@ -20,7 +26,7 @@
        <!--  案件名 -->
         <div class="form-group">
          <label for="project">案件名</label>
-         <input class="form-control" id="project" name="name" value="{{ $project -> name }}" >
+         <input class="form-control" id="project" name="name" value="{{ $project -> name }}" placeholder="8文字まで入力してください" maxlength="8">
             
         </div>
       <!--更新ボタン-->

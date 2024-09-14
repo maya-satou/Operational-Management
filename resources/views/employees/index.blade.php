@@ -33,7 +33,6 @@
                 <th>スキルランク</th>
                 <th>入社日</th>
                 <th>メールアドレス</th>
-                <th>パスワード</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -46,7 +45,6 @@
                     <td>{{ $employee->skill_rank->name }}</td>
                     <td>{{ $employee->hire_date }}</td>
                     <td>{{ $employee->email }}</td>
-                    <td>{{ $employee->password }}</td>
                     <td>
                         <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-warning btn-sm">編集</a>
                     </td>

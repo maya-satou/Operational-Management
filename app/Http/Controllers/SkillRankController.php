@@ -28,7 +28,7 @@ class SkillRankController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|max:4',
           
         ]);
 
@@ -56,7 +56,7 @@ class SkillRankController extends Controller
     {
       
         $validatedData = $request->validate([
-                     'name' => 'required',
+                     'name' => 'required|max:4',
         ]);
 
        
@@ -72,12 +72,7 @@ class SkillRankController extends Controller
     }
     
 
-    public function destroy(SkillRank $skill_rank)
-    {
-        $skill_rank->delete();
-
-        return redirect()->route('skill_ranks.index');
-    }
+   
 
     
 

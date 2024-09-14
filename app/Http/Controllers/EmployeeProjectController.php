@@ -29,7 +29,7 @@ class EmployeeProjectController extends Controller
             'period' => [ 'required',
              Rule::unique('employee_projects')
             ->where(function ($query) use ($request) { return $query->where('project_id', $request->project_id) ->where('employee_id', $request->employee_id); }), ],
-            'cost' => 'required',
+            'cost' => 'required|digits_between:1,8',
             
         ]);
         
@@ -64,7 +64,7 @@ class EmployeeProjectController extends Controller
     {
         $request->validate([
         'period' => 'required|string|max:255',
-        'cost' => 'required|numeric',
+        'cost' => 'required|numeric|digits_between:1,8',
         'project_id' => 'required|exists:projects,id',  // 案件名のバリデーションを追加
 
         ]);
